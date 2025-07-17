@@ -62,8 +62,7 @@ iNotebook/
     │   └── Signup.js
     ├── context/
     │   └── notes/
-    │       ├── noteContext.
-    js
+    │       ├── noteContext.js
     │       └── NoteState.js
     ├── App.js
     └── index.js
