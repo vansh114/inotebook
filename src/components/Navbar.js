@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
     let location = useLocation();
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate("/login");
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate("/login");
+        }
+    }, [navigate]);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,7 +42,7 @@ export const Navbar = () => {
                         )
                         :
                         (
-                            <button className="btn btn-primary">Profile</button>
+                            <button className="btn btn-primary mx-1" onClick={handleLogout}>Logout</button>
                         )
                     }
                 </div>
